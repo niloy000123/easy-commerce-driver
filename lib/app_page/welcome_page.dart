@@ -55,7 +55,7 @@ class WelcomePage extends StatelessWidget {
                     title: 'GET STARTED',
                     onTap: () {
                       hiveService.firstOpenDone();
-                      context.goNamed(AppRoute.home.name);
+                      context.goNamed(AppRoute.signIn.name);
                     },
                     showLoading: false,
                   ),

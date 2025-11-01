@@ -5,9 +5,10 @@ import 'package:page_transition/page_transition.dart';
 import 'package:simple_ecommerce_delivery_app/app_page/splash_page.dart';
 import 'package:simple_ecommerce_delivery_app/app_page/welcome_page.dart';
 import 'package:simple_ecommerce_delivery_app/core/utils/global_function.dart';
+import 'package:simple_ecommerce_delivery_app/features/auth/view/signin_page.dart';
 import 'package:simple_ecommerce_delivery_app/init_dependencies.dart';
 
-enum AppRoute { splash, welcome, signIn, signUp, home }
+enum AppRoute { splash, welcome, signIn, signUp, home, forgotPassPage }
 
 @LazySingleton()
 class AppRouter {
@@ -38,6 +39,17 @@ class AppRouter {
         pageBuilder: (BuildContext context, GoRouterState state) {
           return CustomTransitionPage(
             child: WelcomePage(hiveService: serviceLocator()),
+            transitionsBuilder: _customPageTransitionBuilder,
+          );
+        },
+      ),
+
+      GoRoute(
+        path: '/signin',
+        name: AppRoute.signIn.name,
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return CustomTransitionPage(
+            child: SigninPage(),
             transitionsBuilder: _customPageTransitionBuilder,
           );
         },

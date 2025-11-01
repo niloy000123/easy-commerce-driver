@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_ecommerce_delivery_app/core/utils/color_change.dart';
+
 import '../../../core/app_export.dart';
 
 class ReviewDetailPage extends StatefulWidget {

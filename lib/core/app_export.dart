@@ -19,3 +19,4 @@ export 'package:simple_ecommerce_delivery_app/core/theme/app_colors.dart';
 export 'package:simple_ecommerce_delivery_app/core/common/widget/app_button.dart';
 export 'package:simple_ecommerce_delivery_app/core/common/widget/form_widget.dart';
 export 'package:simple_ecommerce_delivery_app/core/utils/context_less_nav.dart';
+export 'package:simple_ecommerce_delivery_app/core/utils/color_change.dart';

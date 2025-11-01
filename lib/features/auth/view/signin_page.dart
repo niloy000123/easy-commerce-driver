@@ -164,7 +164,9 @@ class _SigninPageState extends State<SigninPage> {
                                       //   );
                                       // }
 
-                                      context.goNamed(AppRoute.home.name);
+                                      context.goNamed(
+                                        AppRoute.reviewDetailPage.name,
+                                      );
                                     }
                                   },
                                 );

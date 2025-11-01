@@ -47,7 +47,7 @@ class WelcomePage extends StatelessWidget {
                     'Manage your deliveries, update order status, and get your jobs done faster.',
                     textAlign: TextAlign.center,
                     style: AppTextStyle(context).s16w400Body.copyWith(
-                      color: colors(context).textLightColor,
+                      color: colors().textLightColor,
                     ),
                   ),
                   32.ph,

@@ -4,7 +4,7 @@ import 'package:simple_ecommerce_delivery_app/core/theme/theme.dart';
 List<BoxShadow> boxShadow(BuildContext context) {
   return [
     BoxShadow(
-      color: colors(context).hintTextColor!.withOpacity(0.2), // Shadow color
+      color: colors().hintTextColor!.withOpacity(0.2), // Shadow color
       spreadRadius: 1, // Spread radius
       blurRadius: 10, // Blur radius
       offset: const Offset(

@@ -128,7 +128,7 @@ class ApGlobalFunctions {
 
       elevation: 0,
       context: context,
-      backgroundColor: colors(context).scaffoldBackgroundColor,
+      backgroundColor: colors().scaffoldBackgroundColor,
       // TODO: Remove when this is in the framework https://github.com/flutter/flutter/issues/118619
       constraints: BoxConstraints(
         maxHeight: MediaQuery.of(context).size.height * 0.8,

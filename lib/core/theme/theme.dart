@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_ecommerce_delivery_app/core/theme/app_colors.dart';
+import 'package:simple_ecommerce_delivery_app/core/utils/global_function.dart';
 
-AppColors colors(context) => Theme.of(context).extension<AppColors>()!;
+AppColors colors() => Theme.of(
+  ApGlobalFunctions.navigatorKey.currentState!.context,
+).extension<AppColors>()!;
 ThemeData getAppTheme({
   required BuildContext context,
   required bool isDarkTheme,

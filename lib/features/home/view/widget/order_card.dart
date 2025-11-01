@@ -8,6 +8,7 @@ class CustomDeliveryOrderCard extends StatelessWidget {
   final String? phoneNumber;
   final String? address;
   final VoidCallback? onCallPressed;
+  final VoidCallback? onTap;
 
   const CustomDeliveryOrderCard({
     super.key,
@@ -17,22 +18,26 @@ class CustomDeliveryOrderCard extends StatelessWidget {
     this.phoneNumber,
     this.address,
     this.onCallPressed,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(4.h),
-      decoration: BoxDecoration(
-        color: lightenColor(colors(context).borderColor!, 0.05),
-        borderRadius: BorderRadius.circular(12.h),
-      ),
-      child: Column(
-        children: [
-          _buildOrderHeader(context),
-          SizedBox(height: 16.h),
-          _buildOrderDetails(context),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(4.h),
+        decoration: BoxDecoration(
+          color: lightenColor(colors().borderColor!, 0.05),
+          borderRadius: BorderRadius.circular(12.h),
+        ),
+        child: Column(
+          children: [
+            _buildOrderHeader(context),
+            SizedBox(height: 16.h),
+            _buildOrderDetails(context),
+          ],
+        ),
       ),
     );
   }
@@ -56,7 +61,7 @@ class CustomDeliveryOrderCard extends StatelessWidget {
             "By:",
             style: AppTextStyle(
               context,
-            ).s16w400Body.copyWith(color: colors(context).textLightColor),
+            ).s16w400Body.copyWith(color: colors().textLightColor),
           ),
           SizedBox(width: 8.h),
           Text(
@@ -71,7 +76,7 @@ class CustomDeliveryOrderCard extends StatelessWidget {
   Widget _buildOrderDetails(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: colors(context).scaffoldBackgroundColor,
+        color: colors().scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(8.h),
       ),
       child: Column(
@@ -91,7 +96,7 @@ class CustomDeliveryOrderCard extends StatelessWidget {
             width: 40.h,
             padding: EdgeInsets.all(8.h),
             borderRadius: 20.h,
-            backgroundColor: lightenColor(colors(context).borderColor!, 0.05),
+            backgroundColor: lightenColor(colors().borderColor!, 0.05),
           ),
           SizedBox(width: 12.h),
           Column(
@@ -105,7 +110,7 @@ class CustomDeliveryOrderCard extends StatelessWidget {
                 phoneNumber ?? "01712 345 678",
                 style: AppTextStyle(
                   context,
-                ).s12w400Body.copyWith(color: colors(context).textLightColor),
+                ).s12w400Body.copyWith(color: colors().textLightColor),
               ),
             ],
           ),
@@ -116,7 +121,7 @@ class CustomDeliveryOrderCard extends StatelessWidget {
             width: 32.h,
             padding: EdgeInsets.all(6.h),
             borderRadius: 16.h,
-            backgroundColor: lightenColor(colors(context).borderColor!, 0.05),
+            backgroundColor: lightenColor(colors().borderColor!, 0.05),
             onPressed: onCallPressed,
           ),
         ],
@@ -129,7 +134,7 @@ class CustomDeliveryOrderCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(
-            color: lightenColor(colors(context).borderColor!, 0.05),
+            color: lightenColor(colors().borderColor!, 0.05),
             width: 1,
           ),
         ),
@@ -205,7 +210,7 @@ class CustomIconButton extends StatelessWidget {
         width: width ?? 48.h,
         padding: padding ?? EdgeInsets.all(12.h),
         decoration: BoxDecoration(
-          color: backgroundColor ?? colors(context).scaffoldBackgroundColor,
+          color: backgroundColor ?? colors().scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(borderRadius ?? 24.h),
         ),
         child: CustomImageView(

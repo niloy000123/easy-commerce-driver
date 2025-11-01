@@ -12,7 +12,7 @@ class AppInputDecor {
       isDense: false,
       contentPadding: const EdgeInsets.all(15),
       hintStyle: TextStyle(
-        color: colors(context).hintTextColor,
+        color: colors().hintTextColor,
         fontSize: 16,
         fontWeight: FontWeight.w300,
       ),
@@ -20,7 +20,7 @@ class AppInputDecor {
       fillColor: Colors.transparent,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.h),
-        borderSide: BorderSide(color: colors(context).borderColor!),
+        borderSide: BorderSide(color: colors().borderColor!),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.h),

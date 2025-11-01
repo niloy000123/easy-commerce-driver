@@ -48,9 +48,9 @@ class _SigninPageState extends State<SigninPage> {
                       Text(
                         'Manage your deliveries, update order status, and get your jobs done faster.',
                         textAlign: TextAlign.center,
-                        style: AppTextStyle(context).s16w400Body.copyWith(
-                          color: colors(context).textLightColor,
-                        ),
+                        style: AppTextStyle(
+                          context,
+                        ).s16w400Body.copyWith(color: colors().textLightColor),
                       ),
                       Form(
                         key: formKey,
@@ -103,9 +103,8 @@ class _SigninPageState extends State<SigninPage> {
                                         borderRadius: BorderRadius.circular(4),
                                       ),
                                     ),
-                                    unselectedWidgetColor: colors(
-                                      context,
-                                    ).hintTextColor,
+                                    unselectedWidgetColor:
+                                        colors().hintTextColor,
                                   ),
                                   child: Checkbox(
                                     value: rememberMe,
@@ -114,18 +113,15 @@ class _SigninPageState extends State<SigninPage> {
                                         rememberMe = newValue!;
                                       });
                                     },
-                                    activeColor: colors(context).primaryColor,
-                                    checkColor: colors(
-                                      context,
-                                    ).scaffoldBackgroundColor,
+                                    activeColor: colors().primaryColor,
+                                    checkColor:
+                                        colors().scaffoldBackgroundColor,
                                   ),
                                 ),
                                 Text(
                                   'Remember Me',
                                   style: AppTextStyle(context).s14w400Body
-                                      .copyWith(
-                                        color: colors(context).textLightColor,
-                                      ),
+                                      .copyWith(color: colors().textLightColor),
                                 ),
                                 Spacer(),
                                 GestureDetector(

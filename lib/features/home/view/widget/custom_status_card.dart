@@ -31,7 +31,7 @@ class CustomStatusCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.h),
       decoration: BoxDecoration(
-        color: colors(context).scaffoldBackgroundColor,
+        color: colors().scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(12.h),
         border: (showBorder ?? false)
             ? Border.all(color: borderColor ?? Colors.transparent, width: 1)
@@ -47,16 +47,16 @@ class CustomStatusCard extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: AppTextStyle(context).s14w500Label.copyWith(
-                    color: colors(context).textLightColor,
-                  ),
+                  style: AppTextStyle(
+                    context,
+                  ).s14w500Label.copyWith(color: colors().textLightColor),
                 ),
                 SizedBox(height: 12.h),
                 Text(
                   value,
-                  style: AppTextStyle(context).s22w400Title.copyWith(
-                    color: colors(context).textRegularColor,
-                  ),
+                  style: AppTextStyle(
+                    context,
+                  ).s22w400Title.copyWith(color: colors().textRegularColor),
                 ),
               ],
             ),

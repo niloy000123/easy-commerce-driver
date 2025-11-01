@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colors(context).scaffoldBackgroundColor,
+        backgroundColor: colors().scaffoldBackgroundColor,
         centerTitle: true,
         title: Text('Dashboard'),
         elevation: 0,
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 12.h),
-      decoration: BoxDecoration(color: colors(context).scaffoldBackgroundColor),
+      decoration: BoxDecoration(color: colors().scaffoldBackgroundColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                   'Good Morning',
                   style: AppTextStyle(
                     context,
-                  ).s14w400Body.copyWith(color: colors(context).textLightColor),
+                  ).s14w400Body.copyWith(color: colors().textLightColor),
                 ),
                 Text(
                   'Isabella Rossi',
@@ -85,11 +85,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           SizedBox(width: 12.h),
-          Container(
-            width: 1.h,
-            height: 32.h,
-            color: colors(context).borderColor,
-          ),
+          Container(width: 1.h, height: 32.h, color: colors().borderColor),
           SizedBox(width: 12.h),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -98,13 +94,13 @@ class _HomePageState extends State<HomePage> {
                 'DUTY HOUR',
                 style: AppTextStyle(
                   context,
-                ).s12w400Body.copyWith(color: colors(context).textLightColor),
+                ).s12w400Body.copyWith(color: colors().textLightColor),
               ),
               Text(
                 '8:00 to 20:00',
                 style: AppTextStyle(
                   context,
-                ).s14w400Body.copyWith(color: colors(context).primaryColor),
+                ).s14w400Body.copyWith(color: colors().primaryColor),
               ),
             ],
           ),
@@ -117,7 +113,7 @@ class _HomePageState extends State<HomePage> {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(24.h),
-      color: lightenColor(colors(context).borderColor!, 0.05),
+      color: lightenColor(colors().borderColor!, 0.05),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -202,6 +198,7 @@ class _HomePageState extends State<HomePage> {
                 userName: 'Emir Yilmaz',
                 phoneNumber: '01712 345 678',
                 address: '2715 Ash Dr. San Jose, South Dakota 83475',
+                onTap: () => context.pushNamed(AppRoute.orderDetailPage.name),
                 onCallPressed: () {
                   // Handle call press
                 },

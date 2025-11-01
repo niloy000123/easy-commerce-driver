@@ -31,7 +31,7 @@ class _ReviewDetailPageState extends State<ReviewDetailPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Divider(color: colors(context).borderColor),
+            Divider(color: colors().borderColor),
             8.ph,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -50,8 +50,8 @@ class _ReviewDetailPageState extends State<ReviewDetailPage> {
                 onTap: () {
                   context.goNamed(AppRoute.home.name);
                 },
-                titleColor: colors(context).primaryColor,
-                buttonColor: colors(context).primaryColor!.withOpacity(.2),
+                titleColor: colors().primaryColor,
+                buttonColor: colors().primaryColor!.withOpacity(.2),
               ),
             ),
             24.ph,
@@ -70,7 +70,7 @@ class _ReviewDetailPageState extends State<ReviewDetailPage> {
                   child: Text(
                     'Review Details',
                     style: AppTextStyle(context).s32w400Headline.copyWith(
-                      color: colors(context).textRegularColor,
+                      color: colors().textRegularColor,
                     ),
                   ),
                 ),
@@ -218,7 +218,7 @@ class _ReviewDetailPageState extends State<ReviewDetailPage> {
                   padding: EdgeInsets.all(24.w),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.w),
-                    color: lightenColor(colors(context).borderColor!, .04),
+                    color: lightenColor(colors().borderColor!, .04),
                   ),
                   child: Column(
                     children: [
@@ -238,11 +238,11 @@ class _ReviewDetailPageState extends State<ReviewDetailPage> {
                       AppButton(
                         suffixIcon: Icon(
                           Icons.camera_alt_outlined,
-                          color: colors(context).primaryColor,
+                          color: colors().primaryColor,
                         ),
-                        buttonColor: colors(context).scaffoldBackgroundColor,
+                        buttonColor: colors().scaffoldBackgroundColor,
                         title: 'Take Photo',
-                        titleColor: colors(context).primaryColor,
+                        titleColor: colors().primaryColor,
                         onTap: () {},
                       ),
                     ],

@@ -1,4 +1,5 @@
 import 'package:simple_ecommerce_delivery_app/features/home/view/widget/custom_status_card.dart';
+import 'package:simple_ecommerce_delivery_app/features/home/view/widget/drawer.dart';
 import 'package:simple_ecommerce_delivery_app/features/home/view/widget/order_card.dart';
 
 import '../../../core/app_export.dart';
@@ -12,9 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: CustomDrawer(),
       appBar: AppBar(
         backgroundColor: colors().scaffoldBackgroundColor,
         centerTitle: true,
@@ -27,6 +31,7 @@ class _HomePageState extends State<HomePage> {
               imagePath: Assets.icons.menu.path,
               height: 24.w,
               width: 24.w,
+              onTap: () => _scaffoldKey.currentState?.openDrawer(),
             ),
           ],
         ),

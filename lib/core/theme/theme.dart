@@ -38,8 +38,8 @@ ThemeData getAppTheme({
             ? const Color(0XFF0f172a)
             : const Color(0XFFf4f4f4),
         textLightColor: isDarkTheme
-            ? const Color(0XFF94a3b8)
-            : const Color(0XFF475569),
+            ? const Color(0XFF475569)
+            : const Color(0XFF94a3b8),
       ),
     ],
     fontFamily: 'Poppins',

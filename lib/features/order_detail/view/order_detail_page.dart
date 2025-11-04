@@ -1,3 +1,6 @@
+import 'package:simple_ecommerce_delivery_app/core/common/widget/custom_icon.dart';
+import 'package:simple_ecommerce_delivery_app/features/order_detail/view/widget/detail_appbar.dart';
+
 import '../../../core/app_export.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +10,7 @@ class OrderDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: DetailAppBar(
         title: "ORDER ID #25356",
         subtitle: "Ongoing",
         leadingIcon: Assets.icons.arrowLeft.path,
@@ -21,301 +24,396 @@ class OrderDetailPage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(child: Column(children: [
-                  
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  _buildOrderItemSection(context),
+                  _buildShippingAddressSection(context),
                 ],
-              )),
+              ),
+            ),
           ),
+          DeliveryButton(),
         ],
       ),
     );
   }
-}
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({
-    super.key,
-    this.title,
-    this.subtitle,
-    this.leadingIcon,
-    this.actionIcon,
-    this.backgroundColor,
-    this.titleColor,
-    this.subtitleColor,
-    this.subtitleBackgroundColor,
-    this.showBorder,
-    this.onLeadingPressed,
-    this.onActionPressed,
-    this.appBarType,
-    this.height,
-  });
-
-  /// Main title text displayed in the app bar
-  final String? title;
-
-  /// Optional subtitle or status text
-  final String? subtitle;
-
-  /// Path to the leading icon (back button, menu, etc.)
-  final String? leadingIcon;
-
-  /// Path to the action icon (profile, notification, etc.)
-  final String? actionIcon;
-
-  /// Background color of the app bar
-  final Color? backgroundColor;
-
-  /// Color of the title text
-  final Color? titleColor;
-
-  /// Color of the subtitle text
-  final Color? subtitleColor;
-
-  /// Background color for subtitle badge
-  final Color? subtitleBackgroundColor;
-
-  /// Whether to show bottom border
-  final bool? showBorder;
-
-  /// Callback for leading icon tap
-  final VoidCallback? onLeadingPressed;
-
-  /// Callback for action icon tap
-  final VoidCallback? onActionPressed;
-
-  /// Type of app bar layout
-  final CustomAppBarType? appBarType;
-
-  /// Custom height for the app bar
-  final double? height;
-
-  @override
-  Size get preferredSize => Size.fromHeight(height ?? 64.h);
-
-  @override
-  Widget build(BuildContext context) {
-    final effectiveAppBarType = appBarType ?? CustomAppBarType.dashboard;
-    final effectiveBackgroundColor =
-        backgroundColor ?? colors().scaffoldBackgroundColor;
-    final effectiveTitleColor = titleColor ?? Color(0xFF000000);
-    final effectiveShowBorder = showBorder ?? false;
-
-    return AppBar(
-      backgroundColor: effectiveBackgroundColor,
-      elevation: 0,
-      automaticallyImplyLeading: false,
-      toolbarHeight: height ?? 64.h,
-      centerTitle: true,
-      leading: GestureDetector(
-        onTap: onLeadingPressed,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomImageView(
-              imagePath: leadingIcon ?? Assets.icons.arrowLeft.path,
-              height: 24.h,
-              width: 24.h,
-              fit: BoxFit.contain,
+  Widget _buildOrderItemSection(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 24.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          12.ph,
+          Text(
+            'Order Items (2)',
+            style: AppTextStyle(context).s16w500Title.copyWith(
+              fontSize: 18.sp,
+              color: colors().textRegularColor,
             ),
-          ],
-        ),
-      ),
-      title: _buildAppBarContent(
-        context,
-        effectiveAppBarType,
-        effectiveTitleColor,
-      ),
-      bottom: effectiveShowBorder ? _buildBorder() : null,
-    );
-  }
-
-  Widget _buildAppBarContent(
-    BuildContext context,
-    CustomAppBarType type,
-    Color titleColor,
-  ) {
-    return _buildOrderLayout(context, titleColor);
-  }
-
-  Widget _buildOrderLayout(BuildContext context, Color titleColor) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (title != null)
-          Text(title!, style: AppTextStyle(context).s22w400Title),
-        if (subtitle != null) ...[
-          SizedBox(height: 6.h),
+          ),
+          12.ph,
+          //items
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 8.h),
+            width: double.infinity,
+            padding: EdgeInsets.all(16.w),
             decoration: BoxDecoration(
-              color: subtitleBackgroundColor ?? Color(0xFFEFF6FF),
-              borderRadius: BorderRadius.circular(14.h),
+              border: Border.all(color: colors().borderColor!),
+              borderRadius: BorderRadius.circular(12.r),
             ),
-            child: Text(
-              subtitle!,
-              style: AppTextStyle(
-                context,
-              ).s14w400Body.copyWith(color: subtitleColor ?? Color(0xFF3B82F6)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Men's Harrington Jacket",
+                  style: AppTextStyle(context).s16w400Body,
+                ),
+                10.ph,
+                Row(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Size: ",
+                          style: AppTextStyle(context).s14w400Body.copyWith(
+                            color: colors().textLightColor,
+                          ),
+                        ),
+                        Text("M", style: AppTextStyle(context).s14w400Body),
+                        16.pw,
+                      ],
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Text(
+                            "Color: ",
+                            style: AppTextStyle(context).s14w400Body.copyWith(
+                              color: colors().textLightColor,
+                            ),
+                          ),
+                          Text(
+                            "Lemon",
+                            style: AppTextStyle(context).s14w400Body,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text(
+                      "1x",
+                      style: AppTextStyle(
+                        context,
+                      ).s14w400Body.copyWith(color: colors().textLightColor),
+                    ),
+                  ],
+                ),
+                16.ph,
+                Divider(color: colors().borderColor),
+                12.ph,
+                Text(
+                  'Vibez Majestic Luxury Smartwatch for Women & Men ',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: AppTextStyle(context).s16w400Body,
+                ),
+                10.ph,
+                Row(
+                  children: [
+                    Text(
+                      "Color ",
+                      style: AppTextStyle(
+                        context,
+                      ).s14w400Body.copyWith(color: colors().textLightColor),
+                    ),
+                    Text(
+                      "- Silver-Golden",
+                      style: AppTextStyle(context).s14w400Body,
+                    ),
+                    Spacer(),
+                    Text(
+                      "1x",
+                      style: AppTextStyle(
+                        context,
+                      ).s14w400Body.copyWith(color: colors().textLightColor),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-          4.ph,
+          16.ph,
+
+          // delivery info
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(16.w),
+            decoration: BoxDecoration(
+              color: lightenColor(AppStaticColor.blueColor, 0.33),
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    CustomIconButton(
+                      iconPath: Assets.icons.byCycle.path,
+                      height: 32.h,
+                      width: 32.h,
+                      padding: EdgeInsets.all(4.h),
+                      borderRadius: 12.h,
+                    ),
+                    8.pw,
+                    Text(
+                      "Delivery by",
+                      style: AppTextStyle(context).s16w400Body,
+                    ),
+                    8.pw,
+                    Spacer(),
+                    Text("Tomorrow", style: AppTextStyle(context).s16w500Title),
+                  ],
+                ),
+                12.ph,
+                Text(
+                  'N.B: Make sure to reach out to the customer before deliver!',
+                  style: AppTextStyle(context).s14w400Body.copyWith(
+                    color: AppStaticColor.blueColor,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          16.ph,
         ],
-      ],
+      ),
     );
   }
 
-  PreferredSizeWidget _buildBorder() {
-    return PreferredSize(
-      preferredSize: Size.fromHeight(1.h),
-      child: Container(
-        height: 1.h,
-        color: lightenColor(colors().borderColor!, 0.05),
+  Widget _buildShippingAddressSection(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      color: lightenColor(colors().borderColor!, 0.05),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          16.ph,
+          Text(
+            'Shipping Details',
+            style: AppTextStyle(context).s16w500Title.copyWith(
+              fontSize: 18.sp,
+              color: colors().textRegularColor,
+            ),
+          ),
+          12.ph,
+          Container(
+            padding: EdgeInsets.all(16.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.r),
+              color: colors().scaffoldBackgroundColor,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    CustomIconButton(
+                      iconPath: Assets.icons.profile.path,
+                      height: 48.h,
+                      width: 48.h,
+                      padding: EdgeInsets.all(12.h),
+                      borderRadius: 24.h,
+                      backgroundColor: lightenColor(
+                        colors().borderColor!,
+                        0.05,
+                      ),
+                    ),
+                    SizedBox(width: 12.h),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Emir Yilmaz",
+                          style: AppTextStyle(context).s14w500Label,
+                        ),
+                        Text(
+                          "01712 345 678",
+                          style: AppTextStyle(context).s12w400Body.copyWith(
+                            color: colors().textLightColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    CustomImageView(
+                      imagePath: Assets.icons.call.path,
+                      height: 24.h,
+                      width: 24.h,
+                      color: Colors.deepPurpleAccent,
+                    ),
+                  ],
+                ),
+                8.ph,
+                Divider(color: colors().borderColor),
+                8.ph,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomImageView(
+                      imagePath: Assets.icons.location.path,
+                      height: 20.h,
+                      width: 20.h,
+                    ),
+                    SizedBox(width: 4.h),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 2.h, right: 6.h),
+                        child: Text(
+                          "2715 Ash Dr. San Jose, South Dakota 83475,San Jose, South Dakota",
+                          style: AppTextStyle(context).s14w500Label,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                8.ph,
+                AppButton(
+                  title: 'GET DIRECTION ON MAP',
+                  onTap: () {},
+                  buttonColor: colors().textRegularColor,
+                ),
+              ],
+            ),
+          ),
+          16.ph,
+        ],
       ),
     );
   }
 }
 
-/// Enum for different app bar layout types
-enum CustomAppBarType { order, dashboard }
-
-//---------------
-
-class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
-    this.decoration,
-    this.leftIcon,
-    this.rightIcon,
-    this.label,
-    this.onPressed,
-    this.buttonStyle,
-    this.buttonTextStyle,
-    this.isDisabled = false,
-    this.height,
-    this.width,
-    this.margin,
-    this.alignment,
-  });
-
-  /// Custom decoration for the button (background, borders, etc.)
-  final BoxDecoration? decoration;
-
-  /// Path to the left icon image
-  final String? leftIcon;
-
-  /// Path to the right icon image
-  final String? rightIcon;
-
-  /// Text label displayed on the button
-  final String? label;
-
-  /// Callback function when button is pressed
-  final VoidCallback? onPressed;
-
-  /// Custom button style configuration
-  final ButtonStyle? buttonStyle;
-
-  /// Custom text style for the button label
-  final TextStyle? buttonTextStyle;
-
-  /// Whether the button is disabled
-  final bool isDisabled;
-
-  /// Fixed height for the button
-  final double? height;
-
-  /// Fixed width for the button
-  final double? width;
-
-  /// External margin around the button
-  final EdgeInsets? margin;
-
-  /// Alignment of the button within its parent
-  final Alignment? alignment;
+class DeliveryButton extends StatefulWidget {
+  const DeliveryButton({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      margin: margin,
-      alignment: alignment,
-      child: decoration != null
-          ? _buildDecoratedButton()
-          : _buildElevatedButton(),
+  State<DeliveryButton> createState() => _DeliveryButtonState();
+}
+
+class _DeliveryButtonState extends State<DeliveryButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
     );
   }
 
-  /// Builds button with custom decoration
-  Widget _buildDecoratedButton() {
-    return Container(
-      decoration: decoration,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: isDisabled ? null : onPressed,
-          borderRadius: decoration?.borderRadius as BorderRadius?,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 30.h, vertical: 12.h),
-            child: _buildButtonContent(),
-          ),
-        ),
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _showSnackBar(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text("🚚 Delivery Started!"),
+        backgroundColor: Colors.green.shade600,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 2),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
 
-  /// Builds standard elevated button
-  Widget _buildElevatedButton() {
-    return ElevatedButton(
-      onPressed: isDisabled ? null : onPressed,
-      style: buttonStyle ?? _getDefaultButtonStyle(),
-      child: _buildButtonContent(),
-    );
+  void _onLongPressStart(LongPressStartDetails details) {
+    _controller.forward(from: 0);
   }
 
-  /// Builds the content inside the button (text and icons)
-  Widget _buildButtonContent() {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
+  void _onLongPressEnd(LongPressEndDetails details) {
+    if (_controller.isCompleted) {
+      _showSnackBar(context);
+    } else {
+      _controller.reverse();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.bottomCenter,
       children: [
-        if (leftIcon != null) ...[
-          CustomImageView(imagePath: leftIcon!, height: 24.h, width: 24.h),
-          SizedBox(width: 8.h),
-        ],
-        if (label != null)
-          Flexible(
-            child: Text(
-              label!,
-              style: buttonTextStyle ?? _getDefaultTextStyle(),
-              textAlign: TextAlign.center,
+        // Base curved button
+        ClipPath(
+          clipper: CurvedTopClipper(),
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(vertical: 30.h),
+            color: const Color(0xFFAA8FFF),
+            child: const Center(
+              child: Text(
+                "Tap & Hold to Begin Delivery",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ),
-        if (rightIcon != null) ...[
-          SizedBox(width: 8.h),
-          CustomImageView(imagePath: rightIcon!, height: 24.h, width: 24.h),
-        ],
+        ),
+
+        // Animated curved progress bar overlay
+        ClipPath(
+          clipper: CurvedTopClipper(),
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              return Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * _controller.value,
+                  height: 80, // same as curved area height
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.25),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+
+        // Gesture detector to handle press
+        Positioned.fill(
+          child: GestureDetector(
+            onLongPressStart: _onLongPressStart,
+            onLongPressEnd: _onLongPressEnd,
+            child: Container(color: Colors.transparent),
+          ),
+        ),
       ],
     );
   }
+}
 
-  /// Default button style configuration
-  ButtonStyle _getDefaultButtonStyle() {
-    return ElevatedButton.styleFrom(
-      backgroundColor: colors().borderColor,
-      foregroundColor: colors().scaffoldBackgroundColor,
-      padding: EdgeInsets.symmetric(horizontal: 30.h, vertical: 12.h),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.h)),
-      elevation: 0,
-      minimumSize: Size(0, 45.h),
-    );
+// Custom curved clipper for top shape
+class CurvedTopClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, 15); // ↓ reduced curve height
+    path.quadraticBezierTo(size.width / 2, 0, size.width, 15);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+    path.close();
+    return path;
   }
 
-  /// Default text style for button label
-  TextStyle _getDefaultTextStyle() {
-    return AppTextStyle(
-      ApGlobalFunctions.navigatorKey.currentState!.context,
-    ).s14w400Body;
-  }
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

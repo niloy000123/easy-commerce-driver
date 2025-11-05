@@ -40,10 +40,10 @@ class AppButton extends StatelessWidget {
     return FilledButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColor ?? colors(context).primaryColor,
+        backgroundColor: buttonColor ?? colors().primaryColor,
         disabledBackgroundColor:
             buttonColor?.withOpacity(.2) ??
-            colors(context).primaryColor?.withOpacity(.2),
+            colors().primaryColor?.withOpacity(.2),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(100.w)),
         ),
@@ -120,10 +120,10 @@ class AppButtonOutline extends StatelessWidget {
     return OutlinedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        side: BorderSide(color: buttonColor ?? colors(context).primaryColor!),
+        side: BorderSide(color: buttonColor ?? colors().primaryColor!),
         disabledBackgroundColor:
             buttonColor?.withOpacity(.2) ??
-            colors(context).primaryColor?.withOpacity(.2),
+            colors().primaryColor?.withOpacity(.2),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(100.w)),
         ),

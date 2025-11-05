@@ -45,6 +45,7 @@ class CustomFormWidget extends StatelessWidget {
       controller: controller,
       focusNode: focusNode,
       readOnly: readOnly,
+      enableInteractiveSelection: !readOnly,
       textAlignVertical: TextAlignVertical.center,
       obscureText: obscureText!,
       onChanged: onChanged,

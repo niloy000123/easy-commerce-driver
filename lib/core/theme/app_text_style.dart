@@ -38,7 +38,7 @@ class AppTextStyle {
       s16w500Title.copyWith(color: AppStaticColor.whiteColor, fontSize: 14.sp);
   //hint
   TextStyle get hintText => s16w400Body.copyWith(
-    color: colors(context).hintTextColor,
+    color: colors().hintTextColor,
     fontWeight: FontWeight.w400,
   );
 
@@ -47,17 +47,17 @@ class AppTextStyle {
   TextStyle get title =>
       s28w400Headline.copyWith(fontSize: 18.sp, fontWeight: FontWeight.w500);
   // TextStyle get subTitle => TextStyle(
-  //       color: colors(context).textColor900,
+  //       color: colors().textColor900,
   //       fontSize: 18.sp,
   //       fontWeight: FontWeight.w700,
   //     );
   // TextStyle get bodyText14 => TextStyle(
-  //       color: colors(context).textColor800,
+  //       color: colors().textColor800,
   //       fontSize: 14.sp,
   //       fontWeight: FontWeight.w300,
   //     );
   // TextStyle get bodyText12 => TextStyle(
-  //       color: colors(context).textColor800,
+  //       color: colors().textColor800,
   //       fontSize: 12.sp,
   //       fontWeight: FontWeight.w300,
   //     );

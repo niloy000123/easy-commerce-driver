@@ -18,14 +18,64 @@ class $AssetsIconsGen {
   AssetGenImage get arrowLeft =>
       const AssetGenImage('assets/icons/arrow_left.png');
 
+  /// File path: assets/icons/by_cycle.png
+  AssetGenImage get byCycle => const AssetGenImage('assets/icons/by_cycle.png');
+
+  /// File path: assets/icons/call.png
+  AssetGenImage get call => const AssetGenImage('assets/icons/call.png');
+
   /// File path: assets/icons/check.png
   AssetGenImage get check => const AssetGenImage('assets/icons/check.png');
 
   /// File path: assets/icons/error.png
   AssetGenImage get error => const AssetGenImage('assets/icons/error.png');
 
+  /// File path: assets/icons/location.png
+  AssetGenImage get location =>
+      const AssetGenImage('assets/icons/location.png');
+
+  /// File path: assets/icons/menu.png
+  AssetGenImage get menu => const AssetGenImage('assets/icons/menu.png');
+
+  /// File path: assets/icons/notification.png
+  AssetGenImage get notification =>
+      const AssetGenImage('assets/icons/notification.png');
+
+  /// File path: assets/icons/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/icons/profile.png');
+
+  /// File path: assets/icons/status_assign.png
+  AssetGenImage get statusAssign =>
+      const AssetGenImage('assets/icons/status_assign.png');
+
+  /// File path: assets/icons/status_completed.png
+  AssetGenImage get statusCompleted =>
+      const AssetGenImage('assets/icons/status_completed.png');
+
+  /// File path: assets/icons/status_ongoing.png
+  AssetGenImage get statusOngoing =>
+      const AssetGenImage('assets/icons/status_ongoing.png');
+
+  /// File path: assets/icons/status_overdue.png
+  AssetGenImage get statusOverdue =>
+      const AssetGenImage('assets/icons/status_overdue.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [arrowLeft, check, error];
+  List<AssetGenImage> get values => [
+    arrowLeft,
+    byCycle,
+    call,
+    check,
+    error,
+    location,
+    menu,
+    notification,
+    profile,
+    statusAssign,
+    statusCompleted,
+    statusOngoing,
+    statusOverdue,
+  ];
 }
 
 class $AssetsImagesGen {

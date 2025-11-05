@@ -39,7 +39,7 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       /* <-------- Content --------> */
-      // backgroundColor: colors(context).primaryColor,
+      // backgroundColor: colors().primaryColor,
       body: Center(
         child: Image.asset(
           Assets.images.appLogo.path,

@@ -5,9 +5,22 @@ import 'package:page_transition/page_transition.dart';
 import 'package:simple_ecommerce_delivery_app/app_page/splash_page.dart';
 import 'package:simple_ecommerce_delivery_app/app_page/welcome_page.dart';
 import 'package:simple_ecommerce_delivery_app/core/utils/global_function.dart';
+import 'package:simple_ecommerce_delivery_app/features/auth/view/review_detail_page.dart';
+import 'package:simple_ecommerce_delivery_app/features/auth/view/signin_page.dart';
+import 'package:simple_ecommerce_delivery_app/features/home/view/home_page.dart';
+import 'package:simple_ecommerce_delivery_app/features/order_detail/view/order_detail_page.dart';
 import 'package:simple_ecommerce_delivery_app/init_dependencies.dart';
 
-enum AppRoute { splash, welcome, signIn, signUp, home }
+enum AppRoute {
+  splash,
+  welcome,
+  signIn,
+  signUp,
+  home,
+  forgotPassPage,
+  reviewDetailPage,
+  orderDetailPage,
+}
 
 @LazySingleton()
 class AppRouter {
@@ -38,6 +51,50 @@ class AppRouter {
         pageBuilder: (BuildContext context, GoRouterState state) {
           return CustomTransitionPage(
             child: WelcomePage(hiveService: serviceLocator()),
+            transitionsBuilder: _customPageTransitionBuilder,
+          );
+        },
+      ),
+
+      GoRoute(
+        path: '/signin',
+        name: AppRoute.signIn.name,
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return CustomTransitionPage(
+            child: SigninPage(),
+            transitionsBuilder: _customPageTransitionBuilder,
+          );
+        },
+        routes: [
+          GoRoute(
+            path: 'review_detail_page',
+            name: AppRoute.reviewDetailPage.name,
+            pageBuilder: (BuildContext context, GoRouterState state) {
+              return CustomTransitionPage(
+                child: ReviewDetailPage(),
+                transitionsBuilder: _customPageTransitionBuilder,
+              );
+            },
+          ),
+        ],
+      ),
+
+      GoRoute(
+        path: '/home',
+        name: AppRoute.home.name,
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return CustomTransitionPage(
+            child: HomePage(),
+            transitionsBuilder: _customPageTransitionBuilder,
+          );
+        },
+      ),
+      GoRoute(
+        path: '/order_detail_page',
+        name: AppRoute.orderDetailPage.name,
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return CustomTransitionPage(
+            child: OrderDetailPage(),
             transitionsBuilder: _customPageTransitionBuilder,
           );
         },

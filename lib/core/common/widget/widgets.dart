@@ -30,9 +30,7 @@ arrowLeft({double? width, double? height, Function()? onTap}) {
       imagePath: Assets.icons.arrowLeft.path,
       width: width ?? 24.w,
       height: height ?? 24.w,
-      color: colors(
-        ApGlobalFunctions.navigatorKey.currentContext!,
-      ).textRegularColor,
+      color: colors().textRegularColor,
     ),
   );
 }

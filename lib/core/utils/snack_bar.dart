@@ -110,7 +110,7 @@ void showCustomSnackBar(
 
               decoration: BoxDecoration(
                 boxShadow: boxShadow(context),
-                color: colors(context).scaffoldBackgroundColor,
+                color: colors().scaffoldBackgroundColor,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
@@ -147,7 +147,7 @@ void showCustomSnackBar(
                   padding: EdgeInsets.all(2.w),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: colors(context).scaffoldBackgroundColor!,
+                      color: colors().scaffoldBackgroundColor!,
                       width: 2.w,
                     ),
                     color: AppStaticColor.slate500Color,

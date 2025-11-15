@@ -9,6 +9,7 @@ import 'package:simple_ecommerce_delivery_app/features/auth/view/review_detail_p
 import 'package:simple_ecommerce_delivery_app/features/auth/view/signin_page.dart';
 import 'package:simple_ecommerce_delivery_app/features/home/view/home_page.dart';
 import 'package:simple_ecommerce_delivery_app/features/order_detail/view/order_detail_page.dart';
+import 'package:simple_ecommerce_delivery_app/features/profile_tab/view/pages/profile_page.dart';
 import 'package:simple_ecommerce_delivery_app/init_dependencies.dart';
 
 enum AppRoute {
@@ -20,6 +21,7 @@ enum AppRoute {
   forgotPassPage,
   reviewDetailPage,
   orderDetailPage,
+  profile,
 }
 
 @LazySingleton()
@@ -95,6 +97,16 @@ class AppRouter {
         pageBuilder: (BuildContext context, GoRouterState state) {
           return CustomTransitionPage(
             child: OrderDetailPage(),
+            transitionsBuilder: _customPageTransitionBuilder,
+          );
+        },
+      ),
+      GoRoute(
+        path: '/profile',
+        name: AppRoute.profile.name,
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return CustomTransitionPage(
+            child: ProfilePage(serviceLocator()),
             transitionsBuilder: _customPageTransitionBuilder,
           );
         },

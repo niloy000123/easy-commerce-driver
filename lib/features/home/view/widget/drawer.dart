@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:simple_ecommerce_delivery_app/core/app_export.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  const CustomDrawer({super.key, required this.scaffoldKey});
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,16 @@ class CustomDrawer extends StatelessWidget {
                 ),
                 16.ph,
                 Text('Emir Yilmaz', style: AppTextStyle(context).s24w500),
-                Text('View Profile', style: AppTextStyle(context).s14w400Body),
+                GestureDetector(
+                  onTap: () async {
+                    scaffoldKey.currentState?.closeDrawer();
+                    context.pushNamed(AppRoute.profile.name);
+                  },
+                  child: Text(
+                    'View Profile',
+                    style: AppTextStyle(context).s14w400Body,
+                  ),
+                ),
                 12.ph,
                 _buildMenuCard(
                   context,

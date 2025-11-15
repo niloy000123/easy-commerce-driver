@@ -16,6 +16,12 @@ import 'package:simple_ecommerce_delivery_app/core/hive/hive_service.dart'
 import 'package:simple_ecommerce_delivery_app/core/router/router.dart' as _i852;
 import 'package:simple_ecommerce_delivery_app/features/auth/service/auth_service.dart'
     as _i645;
+import 'package:simple_ecommerce_delivery_app/features/home/service/home_service.dart'
+    as _i0;
+import 'package:simple_ecommerce_delivery_app/features/order_detail/service/order_detail_service.dart'
+    as _i367;
+import 'package:simple_ecommerce_delivery_app/features/profile_tab/service/profile_service.dart'
+    as _i830;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -26,6 +32,11 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.lazySingleton<_i852.AppRouter>(() => _i852.AppRouter());
     gh.lazySingleton<_i645.AuthService>(() => _i645.AuthServiceImpl());
+    gh.lazySingleton<_i367.OrderDetailCtrService>(
+      () => _i367.OrderDetailServiceImpl(),
+    );
+    gh.lazySingleton<_i0.HomeService>(() => _i0.HomeServiceImpl());
+    gh.lazySingleton<_i830.ProfileService>(() => _i830.ProfileServiceImpl());
     gh.lazySingleton<_i807.HiveService>(() => _i807.HiveServiceImpl());
     return this;
   }

@@ -18,6 +18,10 @@ class $AssetsIconsGen {
   AssetGenImage get arrowLeft =>
       const AssetGenImage('assets/icons/arrow_left.png');
 
+  /// File path: assets/icons/arrow_right.png
+  AssetGenImage get arrowRight =>
+      const AssetGenImage('assets/icons/arrow_right.png');
+
   /// File path: assets/icons/by_cycle.png
   AssetGenImage get byCycle => const AssetGenImage('assets/icons/by_cycle.png');
 
@@ -27,12 +31,29 @@ class $AssetsIconsGen {
   /// File path: assets/icons/check.png
   AssetGenImage get check => const AssetGenImage('assets/icons/check.png');
 
+  /// File path: assets/icons/close.png
+  AssetGenImage get close => const AssetGenImage('assets/icons/close.png');
+
   /// File path: assets/icons/error.png
   AssetGenImage get error => const AssetGenImage('assets/icons/error.png');
+
+  /// File path: assets/icons/key.png
+  AssetGenImage get key => const AssetGenImage('assets/icons/key.png');
+
+  /// File path: assets/icons/language.png
+  AssetGenImage get language =>
+      const AssetGenImage('assets/icons/language.png');
+
+  /// File path: assets/icons/light_theme.png
+  AssetGenImage get lightTheme =>
+      const AssetGenImage('assets/icons/light_theme.png');
 
   /// File path: assets/icons/location.png
   AssetGenImage get location =>
       const AssetGenImage('assets/icons/location.png');
+
+  /// File path: assets/icons/logout.png
+  AssetGenImage get logout => const AssetGenImage('assets/icons/logout.png');
 
   /// File path: assets/icons/menu.png
   AssetGenImage get menu => const AssetGenImage('assets/icons/menu.png');
@@ -40,6 +61,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/notification.png
   AssetGenImage get notification =>
       const AssetGenImage('assets/icons/notification.png');
+
+  /// File path: assets/icons/order.png
+  AssetGenImage get order => const AssetGenImage('assets/icons/order.png');
 
   /// File path: assets/icons/profile.png
   AssetGenImage get profile => const AssetGenImage('assets/icons/profile.png');
@@ -63,13 +87,20 @@ class $AssetsIconsGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     arrowLeft,
+    arrowRight,
     byCycle,
     call,
     check,
+    close,
     error,
+    key,
+    language,
+    lightTheme,
     location,
+    logout,
     menu,
     notification,
+    order,
     profile,
     statusAssign,
     statusCompleted,
